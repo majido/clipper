@@ -11,11 +11,11 @@ Invoke clipper service using an intent. The intent's *Action* can be either "get
 * supported extras
   1. text: The text that you want to be copied in the clipboard
 
+Usage example using broadcast intent:
+	# adb shell
+	# am broadcast -a clipper.set -e text "this can be pasted now"
+	# am broadcast -a clipper.get
 
-  			# adb shell
-  			# am startservice -n com.cm.android/.ClipboardServiceFront -a set -e text "this can be pasted now"
-  			# am startservice -n com.cm.android/.ClipboardServiceFront -a get
-  			# logcat | tail 
 
 # Installation
 Build using maven.
@@ -24,10 +24,3 @@ Build using maven.
 2. build: `mvn package` 
 3. deploy:`mvn android:deploy`
 
-  		 
-
-# TODO
-* Accept broadcat message to simplify the command that need to be used
-* Print get output to shell rather than log 
-* Clean up packaging
-* Remove helloworld

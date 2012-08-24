@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.cm.android" android:versionCode="1" android:versionName="1.0-SNAPSHOT">
+  package="ca.zgrs.clipper" android:versionCode="1" android:versionName="1.0-SNAPSHOT" android:enabled="true">
 
   <application android:icon="@drawable/icon" android:label="@string/app_name">
-    <activity android:name=".HelloAndroidActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-	<service android:name=".ClipboardServiceFront" 
+  	<service android:name=".ClipboardService" 
 		     android:exported="true"
 			 android:enabled="true">
 	</service>
-	<service android:name=".ClipperReceiver" 
+	<receiver android:name=".ClipperReceiver" 
 		     android:exported="true"
 			 android:enabled="true">
 		<intent-filter>
-			<data android:scheme="clipper" android:host="*" android:mimeType="*/*"/>
+			<data android:scheme="clipper" />
 		</intent-filter>
-	</service>
+		<intent-filter>
+			<action android:name="clipper.get" />
+			<action android:name="clipper.set" />
+			<action android:name="get" />
+			<action android:name="set" />
+		</intent-filter>
+	</receiver>
 	
   </application>
 
