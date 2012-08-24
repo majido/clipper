@@ -12,6 +12,8 @@ Invoke clipper service using an intent. The intent's *Action* can be either "get
   1. text: The text that you want to be copied in the clipboard
 
 Usage example using broadcast intent:
+
+
 	# adb shell
 	# am broadcast -a clipper.set -e text "this can be pasted now"
 	# am broadcast -a clipper.get
