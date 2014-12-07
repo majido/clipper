@@ -6,34 +6,34 @@ import android.content.Intent;
 
 import android.util.Log;
 
-import ca.zgrs.clipper.Clipper;
-
 public class ClipboardService extends IntentService {
-	private static String TAG = "Clipboard service";
+	private static String TAG = "ClipboardService";
 
 
 	public ClipboardService() {
 		super("ClipboardService"); 
 	}
 
-	/**
+    /* Define service as sticky so that it stays in background */
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        //start itself to ensure our broadcast receiver is active
+        Log.d(TAG, "Start clipboard service.");
+        startService(new Intent(getApplicationContext(),ClipboardService.class));
+    }
+
+    /**
 	* The IntentService calls this method from the default worker thread with
 	* the intent that started the service. When this method returns, IntentService
 	* stops the service, as appropriate.
 	*/
 	@Override
-	protected void onHandleIntent(Intent intent) {
-		Log.d(TAG, "Inside intent handler!");
-		Log.d(TAG, String.format("Action: %s, Text: %s", intent.getAction(), intent.getStringExtra(Clipper.EXTRA_TEXT)));
-		
-		ClipboardManager cb = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
-		if (Clipper.isActionSet(intent.getAction())) {
-			Log.d(TAG, "Setting text into clipboard");
-			cb.setText( intent.getStringExtra(Clipper.EXTRA_TEXT));
-		} else if (Clipper.isActionGet( intent.getAction()) ) {
-			Log.d(TAG, "Getting text from clipboard");
-			String clip  = cb.getText().toString();
-			Log.i(TAG, "Clipboard text:"+clip);
-		}
-	}
+	protected void onHandleIntent(Intent intent) {}
 }
