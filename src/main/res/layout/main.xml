@@ -11,12 +11,17 @@
     android:singleLine="false"
     android:enabled="true"
     android:textStyle="bold"
-    android:id="@+id/head" />
+    android:id="@+id/head"
+    android:textAppearance="?android:attr/textAppearanceLarge"
+    android:paddingBottom="20dp"
+    android:paddingTop="20dp" />
 
 <TextView
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:text="@string/usage"
     android:enabled="true"
-    android:id="@+id/sub" />
+    android:id="@+id/sub"
+    android:textAppearance="?android:attr/textAppearanceMedium" />
+
 </LinearLayout>
