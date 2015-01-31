@@ -13,13 +13,12 @@ import android.util.Log;
  * The broadcast receiver is active only as long as the application, or its service is active.
  */
 public class ClipperReceiver extends BroadcastReceiver {
-	private static String TAG = "ClipboardReceiver";
+    private static String TAG = "ClipboardReceiver";
 
     public static String ACTION_GET = "clipper.get";
     public static String ACTION_GET_SHORT = "get";
     public static String ACTION_SET = "clipper.set";
     public static String ACTION_SET_SHORT = "set";
-
     public static String EXTRA_TEXT = "text";
 
     public static boolean isActionGet(final String action) {
@@ -30,13 +29,8 @@ public class ClipperReceiver extends BroadcastReceiver {
         return ACTION_SET.equals(action) || ACTION_SET_SHORT.equals(action);
     }
 
-	
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.d(TAG, "Inside broadcast handler!");
-
-        Log.d(TAG, String.format("Action: %s", intent.getAction()));
-
         ClipboardManager cb = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
         if (isActionSet(intent.getAction())) {
             Log.d(TAG, "Setting text into clipboard");
@@ -44,24 +38,22 @@ public class ClipperReceiver extends BroadcastReceiver {
             if (text != null) {
                 cb.setText(text);
                 setResultCode(Activity.RESULT_OK);
-                setResultData("Text is copied in clipboard.");
+                setResultData("Text is copied into clipboard.");
             } else {
                 setResultCode(Activity.RESULT_CANCELED);
-                setResultData("No text was provided. Use -e text \"text to be pasted\"");
+                setResultData("No text is provided. Use -e text \"text to be pasted\"");
             }
         } else if (isActionGet(intent.getAction())) {
             Log.d(TAG, "Getting text from clipboard");
-            CharSequence clip  = cb.getText();
+            CharSequence clip = cb.getText();
             if (clip != null) {
-                Log.d(TAG, String.format(" dd Clipboard text: %s", clip));
+                Log.d(TAG, String.format("Clipboard text: %s", clip));
                 setResultCode(Activity.RESULT_OK);
                 setResultData(clip.toString());
             } else {
                 setResultCode(Activity.RESULT_CANCELED);
-                setResultData("Clipboard is empty.");
+                setResultData("");
             }
-		}
+        }
     }
-    //android.intent.action.PACKAGE_ADDED
-
 }

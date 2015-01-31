@@ -12,7 +12,7 @@ public class Main extends Activity {
 
         setContentView(R.layout.main);
 
-        //start clipboard service
+        // start clipboard service
         Intent serviceIntent = new Intent(this, ClipboardService.class);
         startService(serviceIntent);
     }

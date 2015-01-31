@@ -1,18 +1,16 @@
 package ca.zgrs.clipper;
 
-import android.text.ClipboardManager;
 import android.app.IntentService;
 import android.content.Intent;
 
 import android.util.Log;
 
 public class ClipboardService extends IntentService {
-	private static String TAG = "ClipboardService";
+    private static String TAG = "ClipboardService";
 
-
-	public ClipboardService() {
-		super("ClipboardService"); 
-	}
+    public ClipboardService() {
+        super("ClipboardService");
+    }
 
     /* Define service as sticky so that it stays in background */
     @Override
@@ -24,16 +22,17 @@ public class ClipboardService extends IntentService {
     @Override
     public void onCreate() {
         super.onCreate();
-        //start itself to ensure our broadcast receiver is active
+        // start itself to ensure our broadcast receiver is active
         Log.d(TAG, "Start clipboard service.");
-        startService(new Intent(getApplicationContext(),ClipboardService.class));
+        startService(new Intent(getApplicationContext(), ClipboardService.class));
     }
 
     /**
-	* The IntentService calls this method from the default worker thread with
-	* the intent that started the service. When this method returns, IntentService
-	* stops the service, as appropriate.
-	*/
-	@Override
-	protected void onHandleIntent(Intent intent) {}
+     * The IntentService calls this method from the default worker thread with
+     * the intent that started the service. When this method returns, IntentService
+     * stops the service, as appropriate.
+     */
+    @Override
+    protected void onHandleIntent(Intent intent) {
+    }
 }
