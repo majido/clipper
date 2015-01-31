@@ -27,7 +27,8 @@ Usage example using broadcast intent:
 
 # Building
 Build using maven
+
 1. update pom.xml and set ANDROID_HOME in enviroment.
 2. build: `mvn package` 
-3. deploy:`mvn android:deploy`
+3. deploy: `mvn android:deploy`
 
