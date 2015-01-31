@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="hello">Hello clipboard-service!</string>
-    <string name="app_name">clipboard-service</string>
+    <string name="started">Clipper service is started!</string>
+    <string name="usage">
+        Usage: You can copy to or paste from clipboard from adb shell using the
+        following commands:\n
+        * am broadcast -a clipper.set -e text \'This may be pasted now\' \n
+        * am broadcast -a clipper.get
+    </string>
+    <string name="app_name">Clipper</string>
 </resources>

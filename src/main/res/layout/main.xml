@@ -3,10 +3,20 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
+    android:weightSum="1">
 <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="@string/hello"
-    />
+    android:text="@string/started"
+    android:singleLine="false"
+    android:enabled="true"
+    android:textStyle="bold"
+    android:id="@+id/head" />
+
+<TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/usage"
+    android:enabled="true"
+    android:id="@+id/sub" />
 </LinearLayout>
